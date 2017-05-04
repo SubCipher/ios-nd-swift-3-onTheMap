@@ -11,26 +11,24 @@ import MapKit
 
 class MapKitViewController: UIViewController, MKMapViewDelegate {
     
+       
     @IBOutlet weak var mapView: MKMapView!
     var parseStudentLocations = [[String:AnyObject]]()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+                
         OTMap_Tasks.sharedInstance().loadStudentLocations(completionHandlerForLocations: { (success,results,errorString) in
-           
-          performUpdatesOnMainQueue {
             
+            performUpdatesOnMainQueue {
+                
                 if success {
                     print("success",success)
                     let parseStudentLocations = results
-                   
+                    
                     var annotations = [MKPointAnnotation]()
                     
-                   for dictionary in parseStudentLocations {
+                    for dictionary in parseStudentLocations {
                         let lat = CLLocationDegrees(dictionary["latitude"] as! Double)
                         let long = CLLocationDegrees(dictionary["longitude"] as! Double)
                         
@@ -57,12 +55,10 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
                     print("error line 65 MapKit",errorString  ?? 0)
                 }
             }
-            
         })
-        
-        
     }
     
+       
     //MARK: - MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -89,6 +85,5 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-    
 }
 

@@ -9,6 +9,9 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    var appleReachability = OTMap_NetworkReachability(hostName: "www.appple.com")
+    var reachability: OTMap_NetworkReachability? = OTMap_NetworkReachability.networkReachabilityForInternetConnection()
 
     
     @IBOutlet weak var emailAccount: UITextField!
@@ -23,14 +26,26 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-               
-          }
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
+        _ = reachability?.startNotifier()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+            checkReachability()
+        
         missingLoginNameLabel.isHidden = true
         missingPasswordLabel.isHidden = true
     }
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        reachability?.stopNotifier()
+    }
+
     
     @IBAction func signUP(_ sender: UIButton) {
         
@@ -77,8 +92,27 @@ class LoginViewController: UIViewController {
 
             
         }
-        //emailAccountText = "krishna.picart@kpicart.com"
-        //userPwdText = "Dxuteam718#"
+
+extension LoginViewController {
+    
+    //network reachability
+    
+    func checkReachability() {
+        guard let r = reachability else { return }
         
+        if r.isReachable {
+            view.backgroundColor = UIColor.green
+        } else {
+            view.backgroundColor = UIColor.red
+        }
+    }
+    
+    
+    func reachabilityDidChange(_ notification: Notification){
+        checkReachability()
+    }
+}
+
+
 
 

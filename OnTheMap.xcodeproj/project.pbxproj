@@ -11,6 +11,7 @@
 		2000A32B1EAF817400967794 /* GCDqueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000A32A1EAF817400967794 /* GCDqueue.swift */; };
 		201406501EB997D100C0FFF0 /* OTMap_APImethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2014064E1EB997D100C0FFF0 /* OTMap_APImethods.swift */; };
 		201406511EB997D100C0FFF0 /* OTMap_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2014064F1EB997D100C0FFF0 /* OTMap_Constants.swift */; };
+		201406591EBACEBA00C0FFF0 /* OTMap_NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201406581EBACEBA00C0FFF0 /* OTMap_NetworkReachability.swift */; };
 		201D17521EAC580D003730A4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201D17511EAC580D003730A4 /* MapKit.framework */; };
 		201D17541EAD2F38003730A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D17531EAD2F38003730A4 /* LoginViewController.swift */; };
 		201D17561EAD2F6E003730A4 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D17551EAD2F6E003730A4 /* MapKitViewController.swift */; };
@@ -27,6 +28,7 @@
 		2000A32A1EAF817400967794 /* GCDqueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDqueue.swift; sourceTree = "<group>"; };
 		2014064E1EB997D100C0FFF0 /* OTMap_APImethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMap_APImethods.swift; sourceTree = "<group>"; };
 		2014064F1EB997D100C0FFF0 /* OTMap_Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMap_Constants.swift; sourceTree = "<group>"; };
+		201406581EBACEBA00C0FFF0 /* OTMap_NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OTMap_NetworkReachability.swift; path = ../OTMap_NetworkReachability.swift; sourceTree = "<group>"; };
 		201D17511EAC580D003730A4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		201D17531EAD2F38003730A4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		201D17551EAD2F6E003730A4 /* MapKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		20CF7C421EB2754800A21357 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				201406581EBACEBA00C0FFF0 /* OTMap_NetworkReachability.swift */,
 				2014064E1EB997D100C0FFF0 /* OTMap_APImethods.swift */,
 				2014064F1EB997D100C0FFF0 /* OTMap_Constants.swift */,
 				2000A32A1EAF817400967794 /* GCDqueue.swift */,
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				201D17541EAD2F38003730A4 /* LoginViewController.swift in Sources */,
+				201406591EBACEBA00C0FFF0 /* OTMap_NetworkReachability.swift in Sources */,
 				2000A3291EAF227E00967794 /* OTMap_Tasks.swift in Sources */,
 				201D17581EAD2F8D003730A4 /* TableViewController.swift in Sources */,
 				2000A32B1EAF817400967794 /* GCDqueue.swift in Sources */,
