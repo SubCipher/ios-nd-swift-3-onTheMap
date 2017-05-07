@@ -11,12 +11,12 @@
 		2000A32B1EAF817400967794 /* GCDqueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000A32A1EAF817400967794 /* GCDqueue.swift */; };
 		201406501EB997D100C0FFF0 /* OTMap_APImethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2014064E1EB997D100C0FFF0 /* OTMap_APImethods.swift */; };
 		201406511EB997D100C0FFF0 /* OTMap_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2014064F1EB997D100C0FFF0 /* OTMap_Constants.swift */; };
-		201406591EBACEBA00C0FFF0 /* OTMap_NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201406581EBACEBA00C0FFF0 /* OTMap_NetworkReachability.swift */; };
 		201D17521EAC580D003730A4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201D17511EAC580D003730A4 /* MapKit.framework */; };
 		201D17541EAD2F38003730A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D17531EAD2F38003730A4 /* LoginViewController.swift */; };
 		201D17561EAD2F6E003730A4 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D17551EAD2F6E003730A4 /* MapKitViewController.swift */; };
 		201D17581EAD2F8D003730A4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D17571EAD2F8D003730A4 /* TableViewController.swift */; };
 		201D175A1EAD2FAB003730A4 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D17591EAD2FAB003730A4 /* PostViewController.swift */; };
+		203C976D1EBEC32E00B908EF /* OTMap_NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C976C1EBEC32E00B908EF /* OTMap_NetworkReachability.swift */; };
 		20C51E2C1EAB97DA00C93A0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C51E2B1EAB97DA00C93A0D /* AppDelegate.swift */; };
 		20C51E311EAB97DA00C93A0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C51E2F1EAB97DA00C93A0D /* Main.storyboard */; };
 		20C51E331EAB97DA00C93A0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C51E321EAB97DA00C93A0D /* Assets.xcassets */; };
@@ -28,12 +28,12 @@
 		2000A32A1EAF817400967794 /* GCDqueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDqueue.swift; sourceTree = "<group>"; };
 		2014064E1EB997D100C0FFF0 /* OTMap_APImethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMap_APImethods.swift; sourceTree = "<group>"; };
 		2014064F1EB997D100C0FFF0 /* OTMap_Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMap_Constants.swift; sourceTree = "<group>"; };
-		201406581EBACEBA00C0FFF0 /* OTMap_NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OTMap_NetworkReachability.swift; path = ../OTMap_NetworkReachability.swift; sourceTree = "<group>"; };
 		201D17511EAC580D003730A4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		201D17531EAD2F38003730A4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		201D17551EAD2F6E003730A4 /* MapKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
 		201D17571EAD2F8D003730A4 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		201D17591EAD2FAB003730A4 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		203C976C1EBEC32E00B908EF /* OTMap_NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMap_NetworkReachability.swift; sourceTree = "<group>"; };
 		20C51E281EAB97DA00C93A0D /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C51E2B1EAB97DA00C93A0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20C51E301EAB97DA00C93A0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -107,10 +107,10 @@
 		20CF7C421EB2754800A21357 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				201406581EBACEBA00C0FFF0 /* OTMap_NetworkReachability.swift */,
+				203C976C1EBEC32E00B908EF /* OTMap_NetworkReachability.swift */,
+				2000A32A1EAF817400967794 /* GCDqueue.swift */,
 				2014064E1EB997D100C0FFF0 /* OTMap_APImethods.swift */,
 				2014064F1EB997D100C0FFF0 /* OTMap_Constants.swift */,
-				2000A32A1EAF817400967794 /* GCDqueue.swift */,
 				2000A3281EAF227E00967794 /* OTMap_Tasks.swift */,
 			);
 			name = Model;
@@ -143,7 +143,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = StepwiseDesigns;
 				TargetAttributes = {
 					20C51E271EAB97DA00C93A0D = {
@@ -195,7 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				201D17541EAD2F38003730A4 /* LoginViewController.swift in Sources */,
-				201406591EBACEBA00C0FFF0 /* OTMap_NetworkReachability.swift in Sources */,
+				203C976D1EBEC32E00B908EF /* OTMap_NetworkReachability.swift in Sources */,
 				2000A3291EAF227E00967794 /* OTMap_Tasks.swift in Sources */,
 				201D17581EAD2F8D003730A4 /* TableViewController.swift in Sources */,
 				2000A32B1EAF817400967794 /* GCDqueue.swift in Sources */,
@@ -247,6 +247,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -297,6 +298,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

@@ -25,7 +25,8 @@ extension OTMap_Tasks {
         }
     }
     
-    private func udacityPostMethod(_ username:String, _ pwd: String, _ completionHandlerForLogin: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void)  {
+    func udacityPostMethod(_ username:String, _ pwd: String,
+                           _ completionHandlerForLogin: @escaping ( _ result: AnyObject?, _ error: NSError?) -> Void)  {
         
         /*1. specify the parameters */
         
@@ -41,11 +42,11 @@ extension OTMap_Tasks {
             if let error = error {
                 completionHandlerForLogin(nil, error)
             } else {
-                if let results = results?[OTMap_Tasks.JSONResponseKeys.SessionID]! as? [String:AnyObject] {
-
+                if let results = results?[OTMap_Tasks.JSONResponseKeys.SessionID] as? [String:AnyObject] {
+                    
                     completionHandlerForLogin(results as AnyObject?,nil)
                 } else {
-                    completionHandlerForLogin(nil, NSError(domain: "line near 54 APIMethods user login attemp", code: 0, userInfo: [NSLocalizedDescriptionKey: "could not login to Udacity account"]))
+                    completionHandlerForLogin(nil, NSError(domain: "line near 54 APIMethods user login attemp", code: 0, userInfo: [NSLocalizedDescriptionKey: "could not login to Udacity account0"]))
                 }
                 
             }
@@ -67,17 +68,18 @@ extension OTMap_Tasks {
         //active call to server
         
         let _ = taskForGET(request as URLRequest) { ( response, error ) in
-            if error != nil {
-                completionHandlerForLocations(true, response as! [[String : AnyObject]], nil)
-                print("line 97 for udaictyGETMethod \(error)")
+            
+                if error != nil {
+                completionHandlerForLocations(false, [response as! [String : AnyObject]], nil)
                 
                 return
             } else {
                 if let results = response?[OTMap_Tasks.JSONResponseKeys.Results] as? [[String:AnyObject]] {
+                    //print("taskResults",results)
                     completionHandlerForLocations(true,results, nil)
-                    self.studentLocations = results as [[String : AnyObject]]?
+                   // self.studentLocations = results as [String : AnyObject]?
                 } else {
-                    completionHandlerForLocations(false,response as! [[String : AnyObject]],"could not get data line 93 APIMethods")
+                    completionHandlerForLocations(false,[response as! [String : AnyObject]],"could not get data line 93 APIMethods")
                 }
                 
             }

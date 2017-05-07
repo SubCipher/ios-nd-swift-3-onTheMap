@@ -11,7 +11,8 @@ extension OTMap_Tasks {
     struct Constants {
         static let ApplicationID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
         static let RESTapi = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
-        
+//        Parse Application ID: QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr
+//        REST API Key: QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY
         
         
         //MARK: Base URLS

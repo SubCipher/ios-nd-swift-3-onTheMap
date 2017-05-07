@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tk-xZ-iT7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tk-xZ-iT7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,8 +43,8 @@
                                     <action selector="udacityAuthLogin:" destination="2tk-xZ-iT7" eventType="touchUpInside" id="lvs-sB-Ah0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Missing Login Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23C-Zc-Nie">
-                                <rect key="frame" x="101" y="234" width="173" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Missing Account Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23C-Zc-Nie">
+                                <rect key="frame" x="100" y="234" width="176" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -69,10 +69,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="emailAccount" destination="wxk-YK-lDZ" id="RfV-So-Ncd"/>
-                        <outlet property="missingLoginNameLabel" destination="23C-Zc-Nie" id="RuV-Hx-4mq"/>
-                        <outlet property="missingPasswordLabel" destination="fG3-qg-Zd3" id="vbq-rm-OLV"/>
-                        <outlet property="userPwd" destination="U8F-Cc-PMy" id="6Vw-rt-Q79"/>
+                        <outlet property="missingPwdLabel" destination="fG3-qg-Zd3" id="7tf-fu-52X"/>
+                        <outlet property="missingUserAccountLabel" destination="23C-Zc-Nie" id="mf5-e0-7oD"/>
+                        <outlet property="userAccountTextField" destination="wxk-YK-lDZ" id="wbm-xq-CJ0"/>
+                        <outlet property="userPwdTextField" destination="U8F-Cc-PMy" id="apV-Io-VMe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EYm-13-QX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -169,7 +169,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="v6O-ji-470">
                                 <rect key="frame" x="0.0" y="64" width="375" height="510"/>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="qcL-Wo-4oG"/>
+                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="dCn-qp-JWP"/>
                                 </connections>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FlU-QR-qtJ">
@@ -188,7 +188,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="Kkx-g9-PPq"/>
                     <connections>
-                        <outlet property="mapView" destination="v6O-ji-470" id="wDN-F6-Fh5"/>
+                        <outlet property="mapView" destination="v6O-ji-470" id="M0X-Y4-EtK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

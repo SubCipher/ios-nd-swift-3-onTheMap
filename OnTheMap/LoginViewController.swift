@@ -10,16 +10,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var appleReachability = OTMap_NetworkReachability(hostName: "www.appple.com")
-    var reachability: OTMap_NetworkReachability? = OTMap_NetworkReachability.networkReachabilityForInternetConnection()
+    var reachability = OTMap_NetworkReachability(hostName: "https://udacity.com")
+   //var reachability: OTMap_NetworkReachability? = OTMap_NetworkReachability.networkReachabilityForInternetConnection()
 
     
-    @IBOutlet weak var emailAccount: UITextField!
-    @IBOutlet weak var userPwd: UITextField!
+    @IBOutlet weak var userAccountTextField: UITextField!
+    @IBOutlet weak var userPwdTextField: UITextField!
     
-    @IBOutlet weak var missingLoginNameLabel: UILabel!
-    @IBOutlet weak var missingPasswordLabel: UILabel!
+    @IBOutlet weak var missingUserAccountLabel: UILabel!
     
+    @IBOutlet weak var missingPwdLabel: UILabel!
     
     var emailAccountText: String? = nil
     var userPwdText: String? = nil
@@ -28,70 +28,86 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
-        _ = reachability?.startNotifier()
-    }
+           }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-            checkReachability()
         
-        missingLoginNameLabel.isHidden = true
-        missingPasswordLabel.isHidden = true
+        missingUserAccountLabel.isHidden = true
+        missingPwdLabel.isHidden = true
     }
-    
-    
-    deinit {
+        deinit {
         NotificationCenter.default.removeObserver(self)
         reachability?.stopNotifier()
     }
-
-    
     @IBAction func signUP(_ sender: UIButton) {
         
         
     }
     
-    
-    
-    //check textField for input and add 1 for each textField meets base input requirement
-    var textFieldRequirementVal = 2
-    @IBAction func udacityAuthLogin(_ sender: AnyObject) {
-        
-        emailAccountText = emailAccount.text!
-        userPwdText = userPwd.text!
 
-       
+    
+    
+    @IBAction func udacityAuthLogin(_ sender: AnyObject) {
+    /*
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
+        _ = reachability?.startNotifier()
+
+        */
+        checkReachability()
+   }
+    
+    
+    func udacityLogin() {
+        //checkfor empty textfields
         
-            OTMap_Tasks.sharedInstance().udacityAuthLogin(emailAccountText!, userPwdText!) { (success, errorString) in
+//        if (userPwdTextField.text?.isEmpty)! || (userAccountTextField.text?.isEmpty)! {
+//            
+//            
+//            let _ = (userAccountTextField.text?.isEmpty)! ? (missingUserAccountLabel.isHidden = false) : (missingPwdLabel.isHidden = false)
+//            
+//        }
+//        
+//        else {
+//            
+            emailAccountText = userAccountTextField.text
+            userPwdText = userPwdTextField.text
+//            //        emailAccountText = "krishna.picart@kpicart.com"
+//            //        userPwdText = "password4OTM"
+//            
+        
+            
+            OTMap_Tasks.sharedInstance().udacityAuthLogin(emailAccountText ?? "", userPwdText ?? "") { (success,errorString) in
                 performUpdatesOnMainQueue {
-                    if success {
-                        self.completeLogin()
-                    } else {
-                        if self.presentedViewController != nil {
-                            //self.dismiss(animated: true, completion: nil)
-                            //surpress warning message
-                        }
-                        else {
-                            let actionSheet = UIAlertController(title: "ERROR", message: "\(errorString!)", preferredStyle: .alert)
-                            
-                            
-                            
-                            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                            self.present(actionSheet,animated: true, completion: nil)
-                        }
+                if success {
+                    
+                    self.completeLogin()
+                } else {
+                    if self.presentedViewController != nil {
+                        //self.dismiss(animated: true, completion: nil)
+                        //surpress warning message
+                        return
+                    }
+                    else {
+                        let actionSheet = UIAlertController(title: "ERROR", message: errorString?.localizedDescription, preferredStyle: .alert)
+                        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                        self.present(actionSheet,animated: true, completion: nil)
                     }
                 }
             }
+
+            
+            
         }
-    
+        
+ 
+    }
         func completeLogin(){
             let controller = storyboard!.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
             present(controller, animated: true, completion: nil)
         }
-
             
-        }
+    }
 
 extension LoginViewController {
     
@@ -101,9 +117,17 @@ extension LoginViewController {
         guard let r = reachability else { return }
         
         if r.isReachable {
-            view.backgroundColor = UIColor.green
+            //view.backgroundColor = UIColor.green
+             udacityLogin()
         } else {
-            view.backgroundColor = UIColor.red
+            view.backgroundColor = UIColor.init(red: 5.0, green: 2.0, blue: 2.0, alpha: 0.4)
+            
+            let actionSheet = UIAlertController(title: "NETWORK ERROR", message: "Your Internet Connection Cannot Be Detected", preferredStyle: .alert)
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(actionSheet,animated: true, completion: nil)
+            
+            print("no network connection found")
+            
         }
     }
     

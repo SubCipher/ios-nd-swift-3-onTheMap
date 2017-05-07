@@ -10,7 +10,7 @@ import Foundation
 
 class OTMap_Tasks: NSObject {
     
-   var studentLocations: [[String:AnyObject]]? = nil
+   var studentLocations: [String:AnyObject]? = nil
     //var sessionID: String? = nil
     var session = URLSession.shared
         
@@ -31,7 +31,6 @@ class OTMap_Tasks: NSObject {
      
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
-            
             func sendError(_ error: String) {
                 
                 let userInfo = [NSLocalizedDescriptionKey: error]
@@ -45,7 +44,9 @@ class OTMap_Tasks: NSObject {
             }
             
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-               let responseValue = (response as? HTTPURLResponse)?.statusCode
+               
+                //parse account errors: valid account vs. bad authentication
+                let responseValue = (response as? HTTPURLResponse)?.statusCode
                 if let responseValue = responseValue {
                     if responseValue == 400 {
                         sendError("invailid user name or password")
@@ -56,16 +57,13 @@ class OTMap_Tasks: NSObject {
                     }
                 }
                 
-               sendError("\((response as? HTTPURLResponse)!.statusCode)")
                 return
             }
-           
             
             guard let data = data else {
                 sendError("no data was returned by the request")
                 return
             }
-           
             
             //if let data = data {
             let range = Range(5..<data.count)
@@ -78,7 +76,7 @@ class OTMap_Tasks: NSObject {
         return task
         }
     
-    func taskForGET( _ request :URLRequest, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForGET( _ request :URLRequest, completionHandlerForGET: @escaping (_ result:AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
@@ -87,7 +85,7 @@ class OTMap_Tasks: NSObject {
                 completionHandlerForGET(nil, NSError(domain: "task for GET handler ", code: 1, userInfo: userInfo))
             }
             guard (error == nil) else {
-                sendError("there was an error with your request: Line 88 TaskSwift \(error)")
+                sendError("there was an error with your request: Line 88 TaskSwift")
                 return
             }
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >=  200 && statusCode <= 299 else {
@@ -98,27 +96,24 @@ class OTMap_Tasks: NSObject {
                 sendError("no data was returned by the request")
                 return
             }
-            
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
             }
         task.resume()
+        
         return task
             
         }
     
-    
-
-    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
+    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result:AnyObject?, _ error: NSError?) -> Void) {
         var parsedResult: AnyObject! = nil
         do {
             parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
-            //print("do on line 115 OTMap_Tasks",parsedResult)
 
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "could not parse the JSON data as JSON: '\(data)'"]
-            completionHandlerForConvertData(nil,NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
+            completionHandlerForConvertData(true as AnyObject?,NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
         }
-        completionHandlerForConvertData(parsedResult,nil)
+        completionHandlerForConvertData(parsedResult as AnyObject?,nil)
         
     }
     

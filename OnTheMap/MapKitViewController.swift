@@ -19,40 +19,37 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
                 
         OTMap_Tasks.sharedInstance().loadStudentLocations(completionHandlerForLocations: { (success,results,errorString) in
+         self.parseStudentLocations = results
             
             performUpdatesOnMainQueue {
                 
                 if success {
-                    print("success",success)
-                    let parseStudentLocations = results
                     
                     var annotations = [MKPointAnnotation]()
+                   
                     
-                    for dictionary in parseStudentLocations {
-                        let lat = CLLocationDegrees(dictionary["latitude"] as! Double)
-                        let long = CLLocationDegrees(dictionary["longitude"] as! Double)
-                        
-                        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                        
-                        let first = dictionary["firstName"] as! String
-                        let last = dictionary["lastName"] as! String
-                        let medidaURL = dictionary["mediaURL"] as! String
-                        
-                        let annotation = MKPointAnnotation()
-                        annotation.coordinate = coordinate
-                        annotation.title = "\(first) \(last)"
-                        annotation.subtitle = medidaURL
-                        print("!!Hello THERE!")
-                        annotations.append(annotation)
-                        
+                    for dictionary in self.parseStudentLocations {
+                        if annotations.count > 56 {
+                            return
+                        } else {
+                            let lat = CLLocationDegrees(dictionary["latitude"] as! Double )
+                            let long = CLLocationDegrees(dictionary["longitude"] as! Double)
+                            
+                            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                            
+                            let first = dictionary["firstName"] as! String
+                            let last = dictionary["lastName"] as! String
+                            let medidaURL = dictionary["mediaURL"] as! String
+                            
+                            let annotation = MKPointAnnotation()
+                            annotation.coordinate = coordinate
+                            annotation.title = "\(first) \(last)"
+                            annotation.subtitle = medidaURL
+                            
+                            annotations.append(annotation)                             
+                        }
+                        self.mapView.addAnnotations(annotations)
                     }
-                    self.mapView.addAnnotations(annotations)
-                    print("")
-                    print("****annotations*****",annotations,annotations.count)
-                    print("")
-                    
-                } else {
-                    print("error line 65 MapKit",errorString  ?? 0)
                 }
             }
         })
