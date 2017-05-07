@@ -11,51 +11,46 @@ import MapKit
 
 class MapKitViewController: UIViewController, MKMapViewDelegate {
     
-       
+    
     @IBOutlet weak var mapView: MKMapView!
     var parseStudentLocations = [[String:AnyObject]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         OTMap_Tasks.sharedInstance().loadStudentLocations(completionHandlerForLocations: { (success,results,errorString) in
-         self.parseStudentLocations = results
+            self.parseStudentLocations = results
             
             performUpdatesOnMainQueue {
                 
                 if success {
                     
                     var annotations = [MKPointAnnotation]()
-                   
                     
                     for dictionary in self.parseStudentLocations {
-                        if annotations.count > 56 {
-                            return
-                        } else {
-                            let lat = CLLocationDegrees(dictionary["latitude"] as! Double )
-                            let long = CLLocationDegrees(dictionary["longitude"] as! Double)
-                            
-                            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                            
-                            let first = dictionary["firstName"] as! String
-                            let last = dictionary["lastName"] as! String
-                            let medidaURL = dictionary["mediaURL"] as! String
-                            
-                            let annotation = MKPointAnnotation()
-                            annotation.coordinate = coordinate
-                            annotation.title = "\(first) \(last)"
-                            annotation.subtitle = medidaURL
-                            
-                            annotations.append(annotation)                             
-                        }
-                        self.mapView.addAnnotations(annotations)
+                        
+                        let lat = CLLocationDegrees((dictionary["latitude"] as? Double) ?? 00.0 )
+                        let long = CLLocationDegrees((dictionary["longitude"] as? Double) ?? 00.0 )
+                        
+                        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                        
+                        let first = (dictionary["firstName"] as? String) ?? ""
+                        let last = (dictionary["lastName"] as? String) ?? ""
+                        let medidaURL = (dictionary["mediaURL"] as? String) ?? ""
+                        
+                        let annotation = MKPointAnnotation()
+                        annotation.coordinate = coordinate
+                        annotation.title = "\(first) \(last)"
+                        annotation.subtitle = medidaURL
+                        
+                        annotations.append(annotation)
                     }
+                    self.mapView.addAnnotations(annotations)
                 }
             }
         })
     }
     
-       
     //MARK: - MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

@@ -59,23 +59,9 @@ class LoginViewController: UIViewController {
     
     
     func udacityLogin() {
-        //checkfor empty textfields
-        
-//        if (userPwdTextField.text?.isEmpty)! || (userAccountTextField.text?.isEmpty)! {
-//            
-//            
-//            let _ = (userAccountTextField.text?.isEmpty)! ? (missingUserAccountLabel.isHidden = false) : (missingPwdLabel.isHidden = false)
-//            
-//        }
-//        
-//        else {
-//            
+
             emailAccountText = userAccountTextField.text
             userPwdText = userPwdTextField.text
-//            //        emailAccountText = "krishna.picart@kpicart.com"
-//            //        userPwdText = "password4OTM"
-//            
-        
             
             OTMap_Tasks.sharedInstance().udacityAuthLogin(emailAccountText ?? "", userPwdText ?? "") { (success,errorString) in
                 performUpdatesOnMainQueue {
