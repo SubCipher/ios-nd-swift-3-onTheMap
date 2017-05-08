@@ -99,9 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				201D17531EAD2F38003730A4 /* LoginViewController.swift */,
+				201D17551EAD2F6E003730A4 /* MapKitViewController.swift */,
 				201D17591EAD2FAB003730A4 /* PostViewController.swift */,
 				201D17571EAD2F8D003730A4 /* TableViewController.swift */,
-				201D17551EAD2F6E003730A4 /* MapKitViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -110,8 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				203C976C1EBEC32E00B908EF /* OTMap_NetworkReachability.swift */,
-				203C976E1EBEEB4600B908EF /* StudentInformation.swift */,
 				2000A32A1EAF817400967794 /* GCDqueue.swift */,
+				203C976E1EBEEB4600B908EF /* StudentInformation.swift */,
 				2014064E1EB997D100C0FFF0 /* OTMap_APImethods.swift */,
 				2014064F1EB997D100C0FFF0 /* OTMap_Constants.swift */,
 				2000A3281EAF227E00967794 /* OTMap_Tasks.swift */,

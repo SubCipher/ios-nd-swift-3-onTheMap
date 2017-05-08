@@ -11,18 +11,17 @@ import MapKit
 
 class MapKitViewController: UIViewController, MKMapViewDelegate {
     
-    
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         OTMap_Tasks.sharedInstance().loadStudentLocations(completionHandlerForLocations: { (success,errorString) in
-                                 
+            
+            if success {
+                
             performUpdatesOnMainQueue {
                 
-                if success {
-                    
                     var annotations = [MKPointAnnotation]()
                     
                     for student in StudentInformationArray {
@@ -44,6 +43,14 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
                     }
                     self.mapView.addAnnotations(annotations)
                 }
+
+            } else {
+                
+                print("success completion value = \(success) error message = \(errorString?.description) ")
+                
+                let actionSheet = UIAlertController(title: "Error Downloading", message: errorString?.localizedDescription, preferredStyle: .alert)
+                actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(actionSheet,animated: true,completion: nil)
             }
         })
     }
@@ -58,7 +65,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
             pinView!.canShowCallout = true
-            pinView!.pinTintColor = .red
+            pinView!.pinTintColor = .green
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
         else {
@@ -66,6 +73,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
         }
         return pinView
     }
+    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared

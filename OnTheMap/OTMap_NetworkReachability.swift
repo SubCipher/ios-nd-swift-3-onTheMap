@@ -98,12 +98,10 @@ class OTMap_NetworkReachability: NSObject {
                     
                     NotificationCenter.default.post(name: Notification.Name(rawValue: ReachabilityDidChangeNotificationName), object: networkReachability)
                 }
-                
             }
         }, &context) == true else { return false }
         
         guard SCNetworkReachabilityScheduleWithRunLoop(reachability,CFRunLoopGetCurrent(),CFRunLoopMode.defaultMode.rawValue) == true else {return false }
-        
         
         notifying = true
         return notifying
@@ -134,21 +132,19 @@ class OTMap_NetworkReachability: NSObject {
     var currentReachabilityStatus: ReachabilityStatus {
         if flags.contains(.reachable) == false {
             //The target host is not reachable.
-            print("not reachable = ",flags)
+           
             return .notReachable
         }
         else if flags.contains(.isWWAN) == true {
             //WWAN connetions are ok if the calling appliation is using the CFNetwork APIs
-            print("reachableViaWWAN= ",flags)
             return .reachableViaWWAN
         }
         else if flags.contains(.connectionRequired) == false {
             //if the target host is reachable and no connection is required then we'll assume that you're on Wi-Fi
-            print("reachableViaWiFi = ",flags)
             return .reachableViaWiFi
         }
         else {
-            print("not reachableViaWiFi = ",flags)
+            //if non-specfic connection error to internet
             return .notReachable
         }
     }
@@ -164,6 +160,3 @@ class OTMap_NetworkReachability: NSObject {
         }
     }
 }
-
-
-

@@ -55,9 +55,9 @@ extension OTMap_Tasks {
         
     }
     
-    func loadStudentLocations(completionHandlerForLocations: @escaping (_ success: Bool,_ errorString: String?) -> Void) {
+    func loadStudentLocations(completionHandlerForLocations: @escaping (_ success: Bool,_ errorString: NSError?) -> Void) {
         
-        let urlString = "https://parse.udacity.com/parse/classes/StudentLocation"
+       let urlString = "https://parse.udacity.com/parse/classes/StudentLocation"
         
         //the fully formed network request
         let request = NSMutableURLRequest(url: URL(string:urlString)!)
@@ -66,13 +66,12 @@ extension OTMap_Tasks {
         request.addValue(OTMap_Tasks.Constants.RESTapi, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
         //active call to server
-        
         let _ = taskForGET(request as URLRequest) { ( response, error ) in
             
                 if error != nil {
-                completionHandlerForLocations(false, nil)
-                
+                    completionHandlerForLocations(false, NSError(domain: " URLRequest", code: 0, userInfo: [NSLocalizedDescriptionKey: "error downloading data"]))
                 return
+                    
             } else {
                 if let results = response?[OTMap_Tasks.JSONResponseKeys.Results] as? [[String:AnyObject]] {
                     
@@ -84,7 +83,7 @@ extension OTMap_Tasks {
                     completionHandlerForLocations(true,nil)
                    // self.studentLocations = results as [String : AnyObject]?
                 } else {
-                    completionHandlerForLocations(false,"could not get data line 93 APIMethods")
+                    completionHandlerForLocations(false,NSError(domain: "JSONResults", code: 1, userInfo: [NSLocalizedDescriptionKey:" could not get JSON data results"]))
                 }
                 
             }

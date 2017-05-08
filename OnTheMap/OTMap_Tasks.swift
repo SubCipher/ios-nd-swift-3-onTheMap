@@ -96,7 +96,10 @@ class OTMap_Tasks: NSObject {
                 sendError("no data was returned by the request")
                 return
             }
+            
+           
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
+            
             }
         task.resume()
         
