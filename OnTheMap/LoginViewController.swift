@@ -18,7 +18,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userPwdTextField: UITextField!
     
     @IBOutlet weak var missingUserAccountLabel: UILabel!
-    
     @IBOutlet weak var missingPwdLabel: UILabel!
     
     var emailAccountText: String? = nil
@@ -41,7 +40,6 @@ class LoginViewController: UIViewController {
         reachability?.stopNotifier()
     }
     
-    
     @IBAction func udacityAuthLogin(_ sender: AnyObject) {
         /*
          NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
@@ -50,7 +48,6 @@ class LoginViewController: UIViewController {
          */
         checkReachability()
     }
-    
     
     func udacityLogin() {
         
@@ -86,7 +83,6 @@ class LoginViewController: UIViewController {
     
     //direct user to a signUP screen
     @IBAction func signUP(_ sender: UIButton) {
-        
         
     }
 }

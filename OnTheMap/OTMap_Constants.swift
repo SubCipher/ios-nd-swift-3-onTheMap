@@ -11,9 +11,6 @@ extension OTMap_Tasks {
     struct Constants {
         static let ApplicationID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
         static let RESTapi = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
-//        Parse Application ID: QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr
-//        REST API Key: QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY
-        
         
         //MARK: Base URLS
         
@@ -40,8 +37,6 @@ extension OTMap_Tasks {
     static let Query = "query"
     }
     
-    
-    
     //MARK: JSON Body Keys
     
     struct JSONBodyKeys {
@@ -63,8 +58,6 @@ extension OTMap_Tasks {
         static let StatusMsg = "error"
         static let Results = "results"
         
-        
-        
         //MARK: Authorization
         static let Registered = "registered"
         static let Key = "key"
@@ -73,10 +66,4 @@ extension OTMap_Tasks {
         //MARK: Account
         static let Account = "account"
     }
-    
-    
-    
-    
-    
-    
 }
