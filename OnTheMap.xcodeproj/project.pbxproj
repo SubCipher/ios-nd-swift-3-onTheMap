@@ -17,6 +17,7 @@
 		201D17581EAD2F8D003730A4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D17571EAD2F8D003730A4 /* TableViewController.swift */; };
 		201D175A1EAD2FAB003730A4 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D17591EAD2FAB003730A4 /* PostViewController.swift */; };
 		203C976D1EBEC32E00B908EF /* OTMap_NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C976C1EBEC32E00B908EF /* OTMap_NetworkReachability.swift */; };
+		203C976F1EBEEB4600B908EF /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C976E1EBEEB4600B908EF /* StudentInformation.swift */; };
 		20C51E2C1EAB97DA00C93A0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C51E2B1EAB97DA00C93A0D /* AppDelegate.swift */; };
 		20C51E311EAB97DA00C93A0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C51E2F1EAB97DA00C93A0D /* Main.storyboard */; };
 		20C51E331EAB97DA00C93A0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C51E321EAB97DA00C93A0D /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		201D17571EAD2F8D003730A4 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		201D17591EAD2FAB003730A4 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		203C976C1EBEC32E00B908EF /* OTMap_NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMap_NetworkReachability.swift; sourceTree = "<group>"; };
+		203C976E1EBEEB4600B908EF /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		20C51E281EAB97DA00C93A0D /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C51E2B1EAB97DA00C93A0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20C51E301EAB97DA00C93A0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				203C976C1EBEC32E00B908EF /* OTMap_NetworkReachability.swift */,
+				203C976E1EBEEB4600B908EF /* StudentInformation.swift */,
 				2000A32A1EAF817400967794 /* GCDqueue.swift */,
 				2014064E1EB997D100C0FFF0 /* OTMap_APImethods.swift */,
 				2014064F1EB997D100C0FFF0 /* OTMap_Constants.swift */,
@@ -204,6 +207,7 @@
 				20C51E2C1EAB97DA00C93A0D /* AppDelegate.swift in Sources */,
 				201406501EB997D100C0FFF0 /* OTMap_APImethods.swift in Sources */,
 				201406511EB997D100C0FFF0 /* OTMap_Constants.swift in Sources */,
+				203C976F1EBEEB4600B908EF /* StudentInformation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

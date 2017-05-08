@@ -44,9 +44,7 @@ class LoginViewController: UIViewController {
         
         
     }
-    
 
-    
     
     @IBAction func udacityAuthLogin(_ sender: AnyObject) {
     /*
@@ -60,9 +58,12 @@ class LoginViewController: UIViewController {
     
     func udacityLogin() {
 
-            emailAccountText = userAccountTextField.text
-            userPwdText = userPwdTextField.text
-            
+            emailAccountText = "krishna.picart@kpicart.com"
+            userPwdText = "password4OTM"
+        //emailAccountText = userAccountTextField.text
+        //userPwdText = userPwdTextField.text
+
+        
             OTMap_Tasks.sharedInstance().udacityAuthLogin(emailAccountText ?? "", userPwdText ?? "") { (success,errorString) in
                 performUpdatesOnMainQueue {
                 if success {

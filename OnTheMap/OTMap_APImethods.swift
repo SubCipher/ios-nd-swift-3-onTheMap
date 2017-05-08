@@ -55,7 +55,7 @@ extension OTMap_Tasks {
         
     }
     
-    func loadStudentLocations(completionHandlerForLocations: @escaping (_ success: Bool, _ results: [[String:AnyObject]],_ errorString: String?) -> Void) {
+    func loadStudentLocations(completionHandlerForLocations: @escaping (_ success: Bool,_ errorString: String?) -> Void) {
         
         let urlString = "https://parse.udacity.com/parse/classes/StudentLocation"
         
@@ -70,16 +70,21 @@ extension OTMap_Tasks {
         let _ = taskForGET(request as URLRequest) { ( response, error ) in
             
                 if error != nil {
-                completionHandlerForLocations(false, [response as! [String : AnyObject]], nil)
+                completionHandlerForLocations(false, nil)
                 
                 return
             } else {
                 if let results = response?[OTMap_Tasks.JSONResponseKeys.Results] as? [[String:AnyObject]] {
-                    //print("taskResults",results)
-                    completionHandlerForLocations(true,results, nil)
+                    
+                    for studentInfo in results {
+                       let  newRecord = StudentInformation(studentInfo)
+                        StudentInformationArray.append(newRecord)
+                    }
+  
+                    completionHandlerForLocations(true,nil)
                    // self.studentLocations = results as [String : AnyObject]?
                 } else {
-                    completionHandlerForLocations(false,[response as! [String : AnyObject]],"could not get data line 93 APIMethods")
+                    completionHandlerForLocations(false,"could not get data line 93 APIMethods")
                 }
                 
             }

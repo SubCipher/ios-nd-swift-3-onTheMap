@@ -13,31 +13,28 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
     
     
     @IBOutlet weak var mapView: MKMapView!
-    var parseStudentLocations = [[String:AnyObject]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        OTMap_Tasks.sharedInstance().loadStudentLocations(completionHandlerForLocations: { (success,results,errorString) in
-            self.parseStudentLocations = results
-            
+        OTMap_Tasks.sharedInstance().loadStudentLocations(completionHandlerForLocations: { (success,errorString) in
+                                 
             performUpdatesOnMainQueue {
                 
                 if success {
                     
                     var annotations = [MKPointAnnotation]()
                     
-                    for dictionary in self.parseStudentLocations {
+                    for student in StudentInformationArray {
                         
-                        let lat = CLLocationDegrees((dictionary["latitude"] as? Double) ?? 00.0 )
-                        let long = CLLocationDegrees((dictionary["longitude"] as? Double) ?? 00.0 )
+                        let lat = CLLocationDegrees(student.latitude)
+                        let long = CLLocationDegrees(student.longitude )
                         
                         let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
                         
-                        let first = (dictionary["firstName"] as? String) ?? ""
-                        let last = (dictionary["lastName"] as? String) ?? ""
-                        let medidaURL = (dictionary["mediaURL"] as? String) ?? ""
-                        
+                        let first = student.firstName
+                        let last = student.lastName
+                        let medidaURL = student.mediaURL
                         let annotation = MKPointAnnotation()
                         annotation.coordinate = coordinate
                         annotation.title = "\(first) \(last)"
