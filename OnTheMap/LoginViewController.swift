@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
     var reachability = OTMap_NetworkReachability(hostName: "https://udacity.com")
     //var reachability: OTMap_NetworkReachability? = OTMap_NetworkReachability.networkReachabilityForInternetConnection()
     
-    
     @IBOutlet weak var userAccountTextField: UITextField!
     @IBOutlet weak var userPwdTextField: UITextField!
     
